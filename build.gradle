@@ -60,7 +60,9 @@ task genJaxb {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation ('org.springframework.boot:spring-boot-starter-web-services') {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+	}
 	implementation 'org.springframework.ws:spring-ws-core'
 	implementation 'org.glassfish.jaxb:jaxb-runtime'
 	implementation(files(genJaxb.classesDir).builtBy(genJaxb))
